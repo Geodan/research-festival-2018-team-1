@@ -21,7 +21,7 @@ namespace ConsoleApp9
             client.Connect(clientId);
             Console.WriteLine("Listening....");
             client.Subscribe(new[] { topic }, new[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
-            client.Publish("GOST/" + topic, Encoding.Default.GetBytes(message));
+            client.Publish(topic, Encoding.Default.GetBytes(message));
         }
 
         private static void client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
@@ -31,3 +31,4 @@ namespace ConsoleApp9
         }
     }
 }
+
