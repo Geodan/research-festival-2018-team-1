@@ -3,6 +3,15 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+# Unity
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+Assets/AssetStoreTools*
+*.unityproj
+
 # User-specific files
 *.suo
 *.user
@@ -23,6 +32,16 @@ bld/
 [Bb]in/
 [Oo]bj/
 [Ll]og/
+
+# Unity3D generated meta files
+*.pidb.meta
+*.pdb.meta
+
+# Unity3D Generated File On Crash Reports
+sysinfo.txt
+
+# Builds
+*.unitypackage
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
