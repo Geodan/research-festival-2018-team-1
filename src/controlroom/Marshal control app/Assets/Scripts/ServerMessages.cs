@@ -9,7 +9,7 @@ public class ServerMessages : MonoBehaviour
 {
     private string broker = "broker.hivemq.com";
     //private int port = 1883;
-    private string topic = "arena/test";
+    private string topic = "arena/steward1";
     private string message = "this is a test. dont panic!";
 
     MqttClient client;
@@ -53,16 +53,22 @@ public class ServerMessages : MonoBehaviour
     {
         var s = Encoding.Default.GetString(e.Message);
 
-        var f = float.Parse(s);
+        var sSplit = s.Split(',');
 
-        Debug.Log(f);
+        if(sSplit[0] == "head")
+        {
+            s = sSplit[1];
 
-        queue.Enqueue(f);
+            var f = float.Parse(s);
+
+            queue.Enqueue(f);
+
+            Debug.Log(f);
+        }
     }
 
-    public  void AgentRotation(float angle)
+    public  void AgentRotation(float angle) //Rotate Agent
     {
-        //float rotAngle = float.Parse(angleString);
         agentObject.transform.eulerAngles = new Vector3(transform.eulerAngles.x, angle, transform.eulerAngles.z);
     }
 }

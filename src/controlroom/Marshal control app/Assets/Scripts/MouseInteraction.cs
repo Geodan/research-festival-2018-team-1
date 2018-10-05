@@ -34,7 +34,7 @@ public class MouseInteraction : MonoBehaviour
             {
                 if (rayHit.transform.CompareTag(agentString))
                 {
-                    //Interact with agent
+                    GetComponent<AgentInteraction>().EnableCanvas();
                 }
                 else if(rayHit.transform.CompareTag(baseGroundString))
                 {

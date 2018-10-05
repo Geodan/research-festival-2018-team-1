@@ -3,10 +3,26 @@
 public class AgentInteraction : MonoBehaviour
 {
     public GameObject agentObject;
+    public GameObject agentCanvas;
+    public GameObject rayCastCatcher;
 
-    public void AgentRotation(string angleString)
+    private bool canvasActive = false;
+
+    public void EnableCanvas()
     {
-        float rotAngle = float.Parse(angleString);
-        agentObject.transform.eulerAngles = new Vector3(transform.eulerAngles.x, rotAngle, transform.eulerAngles.z);
+        canvasActive = true;
+        SetCanvas();
+    }
+
+    public void DisableCanvas()
+    {
+        canvasActive = false;
+        SetCanvas();
+    }
+
+    void SetCanvas()
+    {
+        agentCanvas.SetActive(canvasActive);
+        rayCastCatcher.SetActive(canvasActive);
     }
 }
