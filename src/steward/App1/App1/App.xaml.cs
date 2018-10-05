@@ -7,11 +7,14 @@ namespace App1
 {
     public partial class App : Application
     {
+        public EventSystem EventSystem;
+
         public App()
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            EventSystem = new EventSystem();
+            MainPage = new MainPage(EventSystem);
         }
 
         protected override void OnStart()

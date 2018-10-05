@@ -6,9 +6,11 @@
 
     <StackLayout>
         <!-- Place new controls here -->
+        <Entry x:Name="TxtName" Text="Tim" HorizontalOptions="StartAndExpand" VerticalOptions="Center"></Entry>
         <Label Text="Welcome to Xamarin.Forms!" 
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />
+        
     </StackLayout>
 
 </ContentPage>

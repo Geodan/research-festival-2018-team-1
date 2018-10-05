@@ -1,20 +1,15 @@
-﻿using System;
-using System.Diagnostics;
-using System.Text;
-using uPLibrary.Networking.M2Mqtt;
-using Xamarin.Essentials;
+﻿using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace App1
 {
     public partial class MainPage : ContentPage
     {
-        private double headingNorth;
-        private MqttClient client;
-        string topic = "arena/test";
+        private EventSystem _eventSystem;
 
-        public MainPage()
+        public MainPage(EventSystem eventSystem)
         {
+            _eventSystem = eventSystem;
             InitializeComponent();
         }
 
@@ -22,25 +17,33 @@ namespace App1
         {
             base.OnAppearing();
 
-            // start compass
-            Compass.Start(SensorSpeed.UI);
+            _eventSystem.Start();
+
+            Compass.Start(SensorSpeed.Normal);
             Compass.ReadingChanged += Compass_ReadingChanged;
 
-            var broker = "broker.hivemq.com";
-            var port = 1883;
+            Accelerometer.Start(SensorSpeed.Normal);
+            Accelerometer.ReadingChanged += Accelerometer_ReadingChanged;
 
-            client = new MqttClient(broker);
-            var clientId = Guid.NewGuid().ToString();
-            client.Connect(clientId);
+            TxtName.TextChanged += TxtName_TextChanged;
+            _eventSystem.Name = TxtName.Text;
         }
 
+        private void TxtName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            _eventSystem.Name = TxtName.Text;
+        }
 
-        void Compass_ReadingChanged(object sender, CompassChangedEventArgs e)
+        private void Compass_ReadingChanged(object sender, CompassChangedEventArgs e)
         {
             var data = e.Reading;
-            headingNorth = data.HeadingMagneticNorth;
-            Debug.WriteLine("Headingnorth:" + headingNorth);
-            client.Publish(topic, Encoding.Default.GetBytes(headingNorth.ToString()));
+            _eventSystem.CompassEvent(data.HeadingMagneticNorth);
+        }
+
+        private void Accelerometer_ReadingChanged(object sender, AccelerometerChangedEventArgs e)
+        {
+            var data = e.Reading;
+            _eventSystem.AccelerometerEvent(data.Acceleration.X, data.Acceleration.Y, data.Acceleration.Z);
         }
     }
 }
