@@ -6,7 +6,7 @@
 
     <StackLayout>
         <!-- Place new controls here -->
-        <Entry x:Name="TxtName" Text="Tim" HorizontalOptions="StartAndExpand" VerticalOptions="Center"></Entry>
+        <Entry x:Name="TxtName" Text="steward1" HorizontalOptions="StartAndExpand" VerticalOptions="Center"></Entry>
         <Label Text="Welcome to Xamarin.Forms!" 
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />
