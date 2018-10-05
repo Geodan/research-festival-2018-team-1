@@ -110,7 +110,7 @@ MonoBehaviour:
   m_MinSize: {x: 713, y: 492}
   m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
-  controlID: 23699
+  controlID: 8923
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 421}
   m_MaxSize: {x: 4002, y: 8021}
   vertical: 1
-  controlID: 23700
+  controlID: 8924
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -212,7 +212,7 @@ MonoBehaviour:
   m_MinSize: {x: 234, y: 492}
   m_MaxSize: {x: 10004, y: 14042}
   vertical: 1
-  controlID: 23786
+  controlID: 8760
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -394,14 +394,14 @@ MonoBehaviour:
     height: 499
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SceneLighting: 1
-  lastFramingTime: 3646.6214294828924
+  lastFramingTime: 2208.6599088750977
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 1.8671991, y: 17.296335, z: 11.405056}
+    m_Target: {x: -1.4523324, y: 21.094248, z: -22.006517}
     speed: 2
-    m_Value: {x: 1.8671991, y: 17.296335, z: 11.405056}
+    m_Value: {x: -1.4523324, y: 21.094248, z: -22.006517}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -429,19 +429,19 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.0037406965, y: 0.89618057, z: -0.44360936, w: -0.0075657675}
+    m_Target: {x: 0.28686827, y: -0.04653153, z: 0.013951935, w: 0.9567376}
     speed: 2
-    m_Value: {x: -0.0037406965, y: 0.89618057, z: -0.44360936, w: -0.0075657675}
+    m_Value: {x: 0.28686827, y: -0.04653153, z: 0.013951935, w: 0.9567376}
   m_Size:
-    m_Target: 0.014289555
+    m_Target: 2.9705937
     speed: 2
-    m_Value: 0.014289555
+    m_Value: 2.9705937
   m_Ortho:
     m_Target: 0
     speed: 2
     m_Value: 0
   m_ShowGlobalGrid: 1
-  m_LastSceneViewRotation: {x: -0.3372201, y: 0.17202339, z: -0.06282305, w: -0.92344135}
+  m_LastSceneViewRotation: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
   m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 
@@ -567,7 +567,7 @@ MonoBehaviour:
   m_AnimEditor: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 3160
+  m_LastSelectedObjectID: -289996
 --- !u!114 &19
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -597,7 +597,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 8eebfaff0a0bfcff9452fcffbaa9fcffe6fbffff00000000660c0000
+    m_ExpandedIDs: 386dfcffa070fcff5cfbffff6afbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -658,11 +658,11 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Textures
+    - Assets/Materials
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Textures
+  - Assets/Materials
   m_LastFoldersGridSize: 16
   m_LastProjectPath: D:\Documenten\GitKraken clone files\research-festival-2018-team-1\src\controlroom\Marshal
     control app
@@ -670,9 +670,9 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 820b0000
-    m_LastClickedID: 2946
-    m_ExpandedIDs: 000000005a0900002e0b00003c0b0000
+    m_SelectedIDs: 562c0000
+    m_LastClickedID: 11350
+    m_ExpandedIDs: 00000000102a0000e62b0000f42b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -700,7 +700,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000005a0900002e0b00003c0b0000
+    m_ExpandedIDs: 00000000102a0000e62b0000f42b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

@@ -4,21 +4,23 @@ public class TargetLocation : MonoBehaviour
 {
     public GameObject targetPosObj;
 
+    private GameObject targetInstance;
+
     private bool targetExists = false;
 
     public void SetNewTargetLoc(Vector3 targetPos)
     {
-        if (!targetExists)
+        if (targetExists)
         {
-            if (GameObject.Find("TargetPos") != null)
+            if (targetInstance != null)
             {
-                GameObject.Find("TargetPos").transform.position = targetPos;
+                targetInstance.transform.position = targetPos;
             }
-            else
-            {
-                Instantiate(targetPosObj, targetPos, Quaternion.identity);
-            }
-
+        }
+        else
+        {
+            GameObject instance = Instantiate(targetPosObj, targetPos, Quaternion.identity);
+            targetInstance = instance;
             targetExists = true;
         }
     }
