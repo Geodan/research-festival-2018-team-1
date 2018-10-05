@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.12
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio 2017
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marshal control app", "Marshal control app.csproj", "{5A311352-A9DD-EBA9-90DC-40A9D8792D3F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marshal control app", "Marshal control app.csproj", "{5A311352-A9DD-EBA9-90DC-40A9D8792D3F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marshal control app.Editor", "Marshal control app.Editor.csproj", "{BC0E9FED-87AF-6EDB-4B1D-2F99B169C18C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marshal control app.Editor", "Marshal control app.Editor.csproj", "{BC0E9FED-87AF-6EDB-4B1D-2F99B169C18C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marshal control app.Editor", "Marshal control app.Editor.csproj", "{BC0E9FED-87AF-6EDB-4B1D-2F99B169C18C}"
 EndProject
@@ -17,6 +21,18 @@ Global
 		{5A311352-A9DD-EBA9-90DC-40A9D8792D3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A311352-A9DD-EBA9-90DC-40A9D8792D3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A311352-A9DD-EBA9-90DC-40A9D8792D3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A311352-A9DD-EBA9-90DC-40A9D8792D3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A311352-A9DD-EBA9-90DC-40A9D8792D3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A311352-A9DD-EBA9-90DC-40A9D8792D3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A311352-A9DD-EBA9-90DC-40A9D8792D3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC0E9FED-87AF-6EDB-4B1D-2F99B169C18C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC0E9FED-87AF-6EDB-4B1D-2F99B169C18C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC0E9FED-87AF-6EDB-4B1D-2F99B169C18C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC0E9FED-87AF-6EDB-4B1D-2F99B169C18C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC0E9FED-87AF-6EDB-4B1D-2F99B169C18C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC0E9FED-87AF-6EDB-4B1D-2F99B169C18C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC0E9FED-87AF-6EDB-4B1D-2F99B169C18C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC0E9FED-87AF-6EDB-4B1D-2F99B169C18C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BC0E9FED-87AF-6EDB-4B1D-2F99B169C18C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BC0E9FED-87AF-6EDB-4B1D-2F99B169C18C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC0E9FED-87AF-6EDB-4B1D-2F99B169C18C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -24,8 +40,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {2B763BC4-AE1C-456B-B089-92919229B699}
 	EndGlobalSection
 EndGlobal
