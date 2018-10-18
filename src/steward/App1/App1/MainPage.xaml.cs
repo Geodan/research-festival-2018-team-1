@@ -1,15 +1,27 @@
-﻿using Xamarin.Essentials;
+﻿using Plugin.Geolocator;
+using Plugin.Permissions.Abstractions;
+using System;
+using System.Text;
+using uPLibrary.Networking.M2Mqtt;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace App1
 {
     public partial class MainPage : ContentPage
     {
-        private EventSystem _eventSystem;
+        private string name;
+        private double headingMagneticNorth;
+        private double longitude;
+        private double latitude;
+        private double accuracy;
 
-        public MainPage(EventSystem eventSystem)
+        private MqttClient client;
+        private string broker = "broker.hivemq.com";
+        private int publishInterval = 1;
+
+        public MainPage()
         {
-            _eventSystem = eventSystem;
             InitializeComponent();
         }
 
@@ -17,33 +29,58 @@ namespace App1
         {
             base.OnAppearing();
 
-            _eventSystem.Start();
+            var hasPermission = await Utils.CheckPermissions(Permission.Location);
 
+            if (!hasPermission)
+                return;
+
+            // start compass
             Compass.Start(SensorSpeed.Normal);
             Compass.ReadingChanged += Compass_ReadingChanged;
 
-            Accelerometer.Start(SensorSpeed.Normal);
-            Accelerometer.ReadingChanged += Accelerometer_ReadingChanged;
-
             TxtName.TextChanged += TxtName_TextChanged;
-            _eventSystem.Name = TxtName.Text;
+            name = TxtName.Text;
+
+            // start position 
+            var locator = CrossGeolocator.Current;
+            locator.DesiredAccuracy = 1;
+            locator.PositionChanged += Locator_PositionChanged;
+            await locator.StartListeningAsync(new TimeSpan(1), 1, true);
+
+
+            StartPublishing();
+        }
+
+        public void StartPublishing()
+        {
+            client = new MqttClient(broker);
+            var clientId = Guid.NewGuid().ToString();
+            client.Connect(clientId);
+
+            Device.StartTimer(TimeSpan.FromSeconds(publishInterval), () =>
+            {
+                var message = $"{longitude},{latitude},{accuracy},{headingMagneticNorth}";
+                client.Publish($"arena/{name}", Encoding.Default.GetBytes(message));
+                return true; // True = Repeat again, False = Stop the timer
+            });
+        }
+
+        private void Locator_PositionChanged(object sender, Plugin.Geolocator.Abstractions.PositionEventArgs e)
+        {
+            accuracy = e.Position.Accuracy;
+            longitude = e.Position.Longitude;
+            latitude = e.Position.Latitude;
         }
 
         private void TxtName_TextChanged(object sender, TextChangedEventArgs e)
         {
-            _eventSystem.Name = TxtName.Text;
+            name = TxtName.Text;
         }
 
         private void Compass_ReadingChanged(object sender, CompassChangedEventArgs e)
         {
             var data = e.Reading;
-            _eventSystem.CompassEvent(data.HeadingMagneticNorth);
-        }
-
-        private void Accelerometer_ReadingChanged(object sender, AccelerometerChangedEventArgs e)
-        {
-            var data = e.Reading;
-            _eventSystem.AccelerometerEvent(data.Acceleration.X, data.Acceleration.Y, data.Acceleration.Z);
+            headingMagneticNorth = data.HeadingMagneticNorth;
         }
     }
 }
