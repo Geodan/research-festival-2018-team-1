@@ -19,8 +19,8 @@ namespace App1
         private MqttClient client;
         private string broker = "broker.hivemq.com";
         private int publishInterval = 1;
-        private string ip;
         private IWifiIp wifiIp;
+        private int numberOfMesssages = 0;
 
         public MainPage()
         {
@@ -66,6 +66,11 @@ namespace App1
                 var ip = wifiIp.GetWifiIp();
                 var message = $"{longitude},{latitude},{accuracy},{headingMagneticNorth},{ip}";
                 client.Publish($"arena/{name}", Encoding.Default.GetBytes(message));
+                numberOfMesssages++;
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    TxtNumberOfMessages.Text = numberOfMesssages.ToString();
+                });
                 return true; // True = Repeat again, False = Stop the timer
             });
         }

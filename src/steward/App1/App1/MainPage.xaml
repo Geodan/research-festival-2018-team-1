@@ -6,11 +6,10 @@
 
     <StackLayout>
         <!-- Place new controls here -->
-        <Entry x:Name="TxtName" Text="steward1" HorizontalOptions="StartAndExpand" VerticalOptions="Center"></Entry>
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
-        
+        <Label Text="Welcome to the Steward application!" FontSize="Large" />
+        <Entry x:Name="TxtName" Text="steward1" FontSize="Medium" ></Entry>
+        <Label Text="Number of send locations:"  FontSize="Medium"/>
+        <Label x:Name="TxtNumberOfMessages" Text="0"  FontSize="Medium"/>
     </StackLayout>
 
 </ContentPage>
