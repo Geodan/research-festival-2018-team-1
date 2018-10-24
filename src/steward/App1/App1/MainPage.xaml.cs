@@ -19,6 +19,7 @@ namespace App1
         private MqttClient client;
         private string broker = "broker.hivemq.com";
         private int publishInterval = 1;
+        private string ip; 
 
         public MainPage()
         {
@@ -30,6 +31,8 @@ namespace App1
             base.OnAppearing();
 
             var hasPermission = await Utils.CheckPermissions(Permission.Location);
+
+            ip = DependencyService.Get<IWifiIp>().GetWifiIp();
 
             if (!hasPermission)
                 return;
@@ -59,7 +62,7 @@ namespace App1
 
             Device.StartTimer(TimeSpan.FromSeconds(publishInterval), () =>
             {
-                var message = $"{longitude},{latitude},{accuracy},{headingMagneticNorth}";
+                var message = $"{longitude},{latitude},{accuracy},{headingMagneticNorth},{ip}";
                 client.Publish($"arena/{name}", Encoding.Default.GetBytes(message));
                 return true; // True = Repeat again, False = Stop the timer
             });

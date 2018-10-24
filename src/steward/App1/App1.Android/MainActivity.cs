@@ -1,11 +1,6 @@
-﻿using System;
-
-using Android.App;
+﻿using Android.App;
 using Android.Content.PM;
-using Android.Runtime;
 using Android.OS;
-using Android.Hardware;
-using Android.Widget;
 
 namespace App1.Droid
 {
@@ -21,6 +16,7 @@ namespace App1.Droid
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             var app = new App();
             LoadApplication(app);
+
         }
     }
 }
