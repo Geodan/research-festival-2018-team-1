@@ -3,5 +3,6 @@
     public interface IWifiIp
     {
         string GetWifiIp();
+        string GetDeviceId();
     }
 }

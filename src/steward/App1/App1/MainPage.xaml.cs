@@ -20,6 +20,7 @@ namespace App1
         private string broker = "broker.hivemq.com";
         private int publishInterval = 1;
         private IWifiIp wifiIp;
+        private string deviceId;
         private int numberOfMesssages = 0;
 
         public MainPage()
@@ -34,6 +35,12 @@ namespace App1
             var hasPermission = await Utils.CheckPermissions(Permission.Location);
 
             wifiIp = DependencyService.Get<IWifiIp>();
+            deviceId = wifiIp.GetDeviceId();
+
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                TxtDeviceId.Text = deviceId;
+            });
 
             if (!hasPermission)
                 return;
@@ -64,8 +71,8 @@ namespace App1
             Device.StartTimer(TimeSpan.FromSeconds(publishInterval), () =>
             {
                 var ip = wifiIp.GetWifiIp();
-                var message = $"{longitude},{latitude},{accuracy},{headingMagneticNorth},{ip}";
-                client.Publish($"arena/{name}", Encoding.Default.GetBytes(message));
+                var message = $"{longitude},{latitude},{accuracy},{headingMagneticNorth},{ip},{name}";
+                client.Publish($"arena/{deviceId}", Encoding.Default.GetBytes(message));
                 numberOfMesssages++;
                 Device.BeginInvokeOnMainThread(() =>
                 {

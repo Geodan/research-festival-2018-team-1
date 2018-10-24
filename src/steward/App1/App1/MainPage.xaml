@@ -4,12 +4,22 @@
              xmlns:local="clr-namespace:App1"
              x:Class="App1.MainPage">
 
-    <StackLayout>
+    <StackLayout Padding="20">
         <!-- Place new controls here -->
         <Label Text="Welcome to the Steward application!" FontSize="Large" />
-        <Entry x:Name="TxtName" Text="steward1" FontSize="Medium" ></Entry>
-        <Label Text="Number of send locations:"  FontSize="Medium"/>
-        <Label x:Name="TxtNumberOfMessages" Text="0"  FontSize="Medium"/>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Steward name:" FontSize="Medium" VerticalOptions="End"/>
+            <Entry x:Name="TxtName" Text="steward1" FontSize="Medium" VerticalOptions="End"></Entry>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Device ID:" FontSize="Medium"/>
+            <Label x:Name="TxtDeviceId" Text=""  FontSize="Medium"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Number of send locations:" FontSize="Medium"/>
+            <Label x:Name="TxtNumberOfMessages" Text="0"  FontSize="Medium"/>
+        </StackLayout>
+    
     </StackLayout>
 
 </ContentPage>
