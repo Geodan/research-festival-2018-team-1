@@ -44,7 +44,10 @@ namespace App1
             });
 
             if (!hasPermission)
+            {
+                Application.Current?.MainPage?.DisplayAlert("Permissions", "please restart app", "Ok");
                 return;
+            }
 
             // start compass
             Compass.Start(SensorSpeed.Normal);
