@@ -43,7 +43,7 @@ namespace App1
                 if (newStatus.ContainsKey(permission) && newStatus[permission] != PermissionStatus.Granted)
                 {
                     var title = $"{permission} Permission";
-                    var question = $"To use the plugin the {permission} permission is required.";
+                    var question = $"Add the {permission} permission and restart the app...";
                     var positive = "Settings";
                     var negative = "Maybe Later";
                     var task = Application.Current?.MainPage?.DisplayAlert(title, question, positive, negative);

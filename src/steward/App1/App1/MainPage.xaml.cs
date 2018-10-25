@@ -22,6 +22,7 @@ namespace App1
         private IWifiIp wifiIp;
         private string deviceId;
         private int numberOfMesssages = 0;
+        private bool haslocation = false;
 
         public MainPage()
         {
@@ -52,6 +53,8 @@ namespace App1
             TxtName.TextChanged += TxtName_TextChanged;
             name = TxtName.Text;
 
+            TxtBroker.Text = broker;
+
             // start position 
             var locator = CrossGeolocator.Current;
             locator.DesiredAccuracy = 1;
@@ -70,20 +73,24 @@ namespace App1
 
             Device.StartTimer(TimeSpan.FromSeconds(publishInterval), () =>
             {
-                var ip = wifiIp.GetWifiIp();
-                var message = $"{longitude},{latitude},{Math.Round(accuracy,0)},{Math.Round(headingMagneticNorth,0)},{ip},{name}";
-                client.Publish($"arena/{deviceId}", Encoding.Default.GetBytes(message));
-                numberOfMesssages++;
-                Device.BeginInvokeOnMainThread(() =>
+                if (haslocation)
                 {
-                    TxtNumberOfMessages.Text = numberOfMesssages.ToString();
-                });
+                    var ip = wifiIp.GetWifiIp();
+                    var message = $"{longitude},{latitude},{Math.Round(accuracy, 0)},{Math.Round(headingMagneticNorth, 0)},{ip},{name}";
+                    client.Publish($"arena/{deviceId}", Encoding.Default.GetBytes(message));
+                    numberOfMesssages++;
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        TxtNumberOfMessages.Text = numberOfMesssages.ToString();
+                    });
+                }
                 return true; // True = Repeat again, False = Stop the timer
             });
         }
 
         private void Locator_PositionChanged(object sender, Plugin.Geolocator.Abstractions.PositionEventArgs e)
         {
+            haslocation = true;
             accuracy = e.Position.Accuracy;
             longitude = e.Position.Longitude;
             latitude = e.Position.Latitude;
