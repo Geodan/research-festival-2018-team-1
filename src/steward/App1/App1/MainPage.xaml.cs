@@ -17,7 +17,7 @@ namespace App1
         private double accuracy;
 
         private MqttClient client;
-        private string broker = "broker.hivemq.com";
+        private string broker = "iot.eclipse.org";
         private int publishInterval = 1;
         private IWifiIp wifiIp;
         private string deviceId;
