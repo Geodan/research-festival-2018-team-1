@@ -71,7 +71,7 @@ namespace App1
             Device.StartTimer(TimeSpan.FromSeconds(publishInterval), () =>
             {
                 var ip = wifiIp.GetWifiIp();
-                var message = $"{longitude},{latitude},{accuracy},{headingMagneticNorth},{ip},{name}";
+                var message = $"{longitude},{latitude},{Math.Round(accuracy,0)},{Math.Round(headingMagneticNorth,0)},{ip},{name}";
                 client.Publish($"arena/{deviceId}", Encoding.Default.GetBytes(message));
                 numberOfMesssages++;
                 Device.BeginInvokeOnMainThread(() =>
@@ -87,6 +87,11 @@ namespace App1
             accuracy = e.Position.Accuracy;
             longitude = e.Position.Longitude;
             latitude = e.Position.Latitude;
+
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                TxtLocation.Text = $"{Math.Round(longitude,4)}, {Math.Round(latitude,4)}, {Math.Round(accuracy,0)}";
+            });
         }
 
         private void TxtName_TextChanged(object sender, TextChangedEventArgs e)
@@ -98,6 +103,10 @@ namespace App1
         {
             var data = e.Reading;
             headingMagneticNorth = data.HeadingMagneticNorth;
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                TxtHeading.Text = Math.Round(headingMagneticNorth,0).ToString() + "°";
+            });
         }
     }
 }

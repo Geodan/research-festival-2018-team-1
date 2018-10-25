@@ -19,7 +19,16 @@
             <Label Text="Number of send locations:" FontSize="Medium"/>
             <Label x:Name="TxtNumberOfMessages" Text="0"  FontSize="Medium"/>
         </StackLayout>
-    
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Location:" FontSize="Medium"/>
+            <Label x:Name="TxtLocation" Text="0"  FontSize="Medium"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Heading:" FontSize="Medium"/>
+            <Label x:Name="TxtHeading" Text="0"  FontSize="Medium"/>
+        </StackLayout>
+
+
     </StackLayout>
 
 </ContentPage>
