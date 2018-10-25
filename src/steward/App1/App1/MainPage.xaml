@@ -16,6 +16,10 @@
             <Label x:Name="TxtBroker" Text="" FontSize="Medium" VerticalOptions="End"></Label>
         </StackLayout>
         <StackLayout Orientation="Horizontal">
+            <Label Text="IP:" FontSize="Medium" VerticalOptions="End"/>
+            <Label x:Name="TxtIP" Text="" FontSize="Medium" VerticalOptions="End"></Label>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
             <Label Text="Device ID:" FontSize="Medium"/>
             <Label x:Name="TxtDeviceId" Text=""  FontSize="Medium"/>
         </StackLayout>
