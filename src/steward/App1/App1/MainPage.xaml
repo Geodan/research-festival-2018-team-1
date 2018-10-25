@@ -24,6 +24,10 @@
             <Label x:Name="TxtDeviceId" Text=""  FontSize="Medium"/>
         </StackLayout>
         <StackLayout Orientation="Horizontal">
+            <Label Text="Has internet connection:" FontSize="Medium"/>
+            <Label x:Name="TxtHasInternetConnection" Text="false"  FontSize="Medium"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
             <Label Text="Number of send locations:" FontSize="Medium"/>
             <Label x:Name="TxtNumberOfMessages" Text="0"  FontSize="Medium"/>
         </StackLayout>
@@ -35,8 +39,5 @@
             <Label Text="Heading:" FontSize="Medium"/>
             <Label x:Name="TxtHeading" Text="0"  FontSize="Medium"/>
         </StackLayout>
-
-
     </StackLayout>
-
 </ContentPage>
