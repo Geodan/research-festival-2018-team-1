@@ -6,7 +6,7 @@
 
     <StackLayout Padding="20">
         <!-- Place new controls here -->
-        <Label Text="Welcome to the Steward application!" FontSize="Large" />
+        <Label Text="Steward application 0.5" FontSize="Large" />
         <StackLayout Orientation="Horizontal">
             <Label Text="Steward name:" FontSize="Medium" VerticalOptions="End"/>
             <Entry x:Name="TxtName" Text="steward1" FontSize="Medium" VerticalOptions="End"></Entry>
@@ -39,5 +39,20 @@
             <Label Text="Heading:" FontSize="Medium"/>
             <Label x:Name="TxtHeading" Text="0"  FontSize="Medium"/>
         </StackLayout>
+
+        <BoxView HeightRequest="1" BackgroundColor="Black" HorizontalOptions="FillAndExpand" />
+        
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Incident type:" FontSize="Medium"/>
+            <Picker x:Name="IncidentTypePicker" FontSize="Medium" Title="Select Incident Type"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Incident description:" FontSize="Medium"/>
+            <Entry x:Name="IncidentTypeDescription" FontSize="Medium" WidthRequest="200"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Button Text="Send incident" Clicked="OnIncidentSendClicked" />
+        </StackLayout>
+        <BoxView HeightRequest="1" BackgroundColor="Black" HorizontalOptions="FillAndExpand" />
     </StackLayout>
 </ContentPage>

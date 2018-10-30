@@ -1,6 +1,7 @@
 ﻿using Plugin.Geolocator;
 using Plugin.Permissions.Abstractions;
 using System;
+using System.Collections.Generic;
 using System.Text;
 using uPLibrary.Networking.M2Mqtt;
 using Xamarin.Essentials;
@@ -28,6 +29,9 @@ namespace App1
         public MainPage()
         {
             InitializeComponent();
+
+            var incidentTypes = new List<string>() { "Fire", "Bomb ", "Weather" };
+            IncidentTypePicker.ItemsSource = incidentTypes;
         }
 
         protected async override void OnAppearing()
@@ -92,6 +96,21 @@ namespace App1
             }
         }
 
+        private int GetIncidentTypeCode(string incidenttype)
+        {
+            switch (incidenttype)
+            {
+                case "Fire":
+                    return 100;
+                case "Bomb":
+                    return 200;
+                case "Weather":
+                    return 300;
+                default:return 0;
+            }
+
+        }
+
 
         public void StartPublishing()
         {
@@ -147,6 +166,22 @@ namespace App1
             {
                 TxtHeading.Text = Math.Round(headingMagneticNorth,0).ToString() + "°";
             });
+        }
+
+        void OnIncidentSendClicked(object sender, EventArgs args)
+        {
+            var dt = DateTime.UtcNow.ToString("o");
+            var item = GetIncidentTypeCode((string)IncidentTypePicker.SelectedItem);
+            var desc = IncidentTypeDescription.Text;
+            if (desc == null)
+            {
+                desc = string.Empty;
+            }
+
+            var message = $"{deviceId},{name},{item},{desc},{longitude},{latitude},{dt}";
+            client.Publish($"arena/incidents", Encoding.Default.GetBytes(message));
+
+            DisplayAlert("Incident send", "Thanks, your Incident has been submitted.", "OK");
         }
     }
 }
