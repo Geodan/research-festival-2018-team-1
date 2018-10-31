@@ -30,7 +30,7 @@ namespace App1
         {
             InitializeComponent();
 
-            var incidentTypes = new List<string>() { "Fire", "Bomb ", "Weather" };
+            var incidentTypes = new List<string>() { "Fire", "Bomb", "Weather" };
             IncidentTypePicker.ItemsSource = incidentTypes;
         }
 
