@@ -59,8 +59,9 @@ namespace App1
             Compass.Start(SensorSpeed.Normal);
             Compass.ReadingChanged += Compass_ReadingChanged;
 
+            TxtName.Text = Settings.StewardName;
             TxtName.TextChanged += TxtName_TextChanged;
-            name = TxtName.Text;
+            name = Settings.StewardName;
 
             TxtBroker.Text = broker;
 
@@ -156,6 +157,7 @@ namespace App1
         private void TxtName_TextChanged(object sender, TextChangedEventArgs e)
         {
             name = TxtName.Text;
+            Settings.StewardName = name;
         }
 
         private void Compass_ReadingChanged(object sender, CompassChangedEventArgs e)
