@@ -25,6 +25,7 @@ namespace App1
         private int numberOfMesssages = 0;
         private bool haslocation = false;
         private bool continuePublishing = true;
+        private bool initialised;
 
         public MainPage()
         {
@@ -37,6 +38,10 @@ namespace App1
         protected async override void OnAppearing()
         {
             base.OnAppearing();
+
+            // Move stsuff to OnStart in app instead of appearing of this page
+            if (initialised)
+                return;
 
             var hasPermission = await Utils.CheckPermissions(Permission.Location);
 
@@ -71,16 +76,18 @@ namespace App1
             locator.PositionChanged += Locator_PositionChanged;
             await locator.StartListeningAsync(new TimeSpan(1), 1, true);
 
-            if(Connectivity.NetworkAccess==NetworkAccess.Internet)
+            StartPublishing();
+
+            if (Connectivity.NetworkAccess==NetworkAccess.Internet)
             {
                 TxtHasInternetConnection.Text = "true";
-                StartPublishing();
             }
             else
             {
                 TxtHasInternetConnection.Text = "false";
             }
 
+            initialised = true;
         }
 
         private void Connectivity_ConnectivityChanged(object sender, ConnectivityChangedEventArgs e)
@@ -112,7 +119,6 @@ namespace App1
 
         }
 
-
         public void StartPublishing()
         {
             continuePublishing = true;
@@ -122,7 +128,7 @@ namespace App1
 
             Device.StartTimer(TimeSpan.FromSeconds(publishInterval), () =>
             {
-                if (haslocation)
+                if (haslocation && Connectivity.NetworkAccess == NetworkAccess.Internet)
                 {
                     var ip = wifiIp.GetWifiIp();
 
@@ -137,7 +143,7 @@ namespace App1
                         TxtNumberOfMessages.Text = numberOfMesssages.ToString();
                     });
                 }
-                return continuePublishing; // True = Repeat again, False = Stop the timer
+                return true; // True = Repeat again, False = Stop the timer //@time: prevent from stopping the timer, maybe causing app to stop in background, still only send when there is a location and connection
             });
         }
 
@@ -150,7 +156,7 @@ namespace App1
 
             Device.BeginInvokeOnMainThread(() =>
             {
-                TxtLocation.Text = $"{Math.Round(longitude,4)}, {Math.Round(latitude,4)}, {Math.Round(accuracy,0)}";
+                TxtLocation.Text = $"{Math.Round(longitude,5)}, {Math.Round(latitude,5)}, {Math.Round(accuracy,0)}";
             });
         }
 

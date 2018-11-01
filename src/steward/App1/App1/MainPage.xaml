@@ -6,7 +6,7 @@
 
     <StackLayout Padding="20">
         <!-- Place new controls here -->
-        <Label Text="Steward application 0.5" FontSize="Large" />
+        <Label Text="Steward application 0.6" FontSize="Large" />
         <StackLayout Orientation="Horizontal">
             <Label Text="Steward name:" FontSize="Medium" VerticalOptions="End"/>
             <Entry x:Name="TxtName" Text="steward1" FontSize="Medium" VerticalOptions="End"></Entry>
