@@ -128,7 +128,7 @@ namespace App1
 
             Device.StartTimer(TimeSpan.FromSeconds(publishInterval), () =>
             {
-                if (haslocation && Connectivity.NetworkAccess == NetworkAccess.Internet)
+                if (haslocation)
                 {
                     var ip = wifiIp.GetWifiIp();
 
@@ -143,7 +143,7 @@ namespace App1
                         TxtNumberOfMessages.Text = numberOfMesssages.ToString();
                     });
                 }
-                return true; // True = Repeat again, False = Stop the timer //@time: prevent from stopping the timer, maybe causing app to stop in background, still only send when there is a location and connection
+                return continuePublishing; // True = Repeat again, False = Stop the timer //@time: prevent from stopping the timer, maybe causing app to stop in background, still only send when there is a location and connection
             });
         }
 

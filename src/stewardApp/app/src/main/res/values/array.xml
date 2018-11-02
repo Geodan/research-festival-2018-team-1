@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="incidentTypes">
+        <item>transport</item>
+        <item>injury</item>
+        <item>fight</item>
+        <item>beer</item>
+        <item>fire</item>
+        <item>weather</item>
+    </string-array>
+</resources>

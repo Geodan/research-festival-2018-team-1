@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tableLayout1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:padding="2dip" >
+
+        <TextView
+            android:id="@+id/txtViewStewardName"
+            android:text="Name"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="130dp"
+            android:padding="2dip"/>
+
+        <EditText
+            android:id="@+id/txtViewStewardNameValue"
+            android:layout_width="211dp"
+            android:singleLine="true"
+            android:inputType="text"
+            android:imeOptions="actionDone"
+            android:text="steward1" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="2dip" >
+
+        <TextView
+            android:id="@+id/txtViewBroker"
+            android:text="Broker"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="130dp"
+            android:padding="2dip" />
+        <EditText
+            android:id="@+id/txtViewBrokerValue"
+            android:layout_width="211dp"
+            android:singleLine="true"
+            android:inputType="text"
+            android:imeOptions="actionDone"
+            android:text="tcp://iot.eclipse.org:1883" />
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="2dip" >
+
+        <TextView
+            android:id="@+id/txtViewIp"
+            android:text="IP"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="130dp"
+            android:padding="2dip" />
+        <TextView
+            android:id="@+id/txtViewIpValue"
+            android:text="no connection"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="2dip" >
+
+        <TextView
+            android:id="@+id/txtDeviceId"
+            android:text="Device ID"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="130dp"
+            android:padding="2dip" />
+        <TextView
+            android:id="@+id/txtDeviceIdValue"
+            android:text="no value"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </TableRow>
+    <TableRow
+        android:id="@+id/tableRow5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="2dip" >
+
+        <TextView
+            android:id="@+id/txtHasInternet"
+            android:text="Connected"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="130dp"
+            android:padding="2dip" />
+        <TextView
+            android:id="@+id/txtHasInternetValue"
+            android:text="false"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </TableRow>
+    <TableRow
+        android:id="@+id/tableRow6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="2dip" >
+
+        <TextView
+            android:id="@+id/txtSendLocations"
+            android:text="Send"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="130dp"
+            android:padding="2dip" />
+        <TextView
+            android:id="@+id/txtSendLocationsValue"
+            android:text="0"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </TableRow>
+    <TableRow
+        android:id="@+id/tableRow7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="2dip" >
+
+        <TextView
+            android:id="@+id/txtLocation"
+            android:text="Location"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="130dp"
+            android:padding="2dip" />
+        <TextView
+            android:id="@+id/txtLocationValue"
+            android:text="0"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </TableRow>
+    <TableRow
+        android:id="@+id/tableRow8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="2dip" >
+
+        <TextView
+            android:id="@+id/txtAccuracy"
+            android:text="Accuracy"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="130dp"
+            android:padding="2dip" />
+        <TextView
+            android:id="@+id/txtAccuracyValue"
+            android:text="0"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </TableRow>
+    <TableRow
+        android:id="@+id/tableRow9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="2dip" >
+
+        <TextView
+            android:id="@+id/txtHeading"
+            android:text="Heading"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="130dp"
+            android:padding="2dip" />
+        <TextView
+            android:id="@+id/txtHeadingValue"
+            android:text="0"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </TableRow>
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/txtSliderValue"
+            android:layout_margin="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <SeekBar
+            android:id="@+id/seekBar"
+            android:max="2000"
+            android:min="100"
+            android:progress="1000"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+</TableLayout>
