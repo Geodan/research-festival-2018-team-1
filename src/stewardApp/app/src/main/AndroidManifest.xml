@@ -26,15 +26,6 @@
             android:name=".SensorService"
             android:enabled="true"
             android:stopWithTask="false"/>
-        <receiver
-            android:name=".SensorRestarterBroadcastReceiver"
-            android:enabled="true"
-            android:exported="true"
-            android:label="RestartServiceWhenStopped">
-            <intent-filter>
-                <action android:name="geodan.nl.steward.RestartSensor"/>
-            </intent-filter>
-        </receiver>
     </application>
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>

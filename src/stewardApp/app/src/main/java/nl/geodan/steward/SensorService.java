@@ -176,11 +176,11 @@ public class SensorService extends Service implements SensorEventListener {
 
     @Override
     public void onDestroy() {
-        super.onDestroy();
+
 
         Log.i("EXIT", "ondestroy!");
-        Intent broadcastIntent = new Intent("nl.geodan.steward.RestartSensor");
-        sendBroadcast(broadcastIntent);
+       // Intent broadcastIntent = new Intent("nl.geodan.steward.RestartSensor");
+       // sendBroadcast(broadcastIntent);
         stoptimertask();
 
         if (mLocationManager != null) {
@@ -192,6 +192,8 @@ public class SensorService extends Service implements SensorEventListener {
                 }
             }
         }
+
+        super.onDestroy();
     }
 
     public void startCompass(){

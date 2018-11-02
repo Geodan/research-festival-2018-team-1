@@ -71,6 +71,13 @@ public class MainActivity extends AppCompatActivity {
             }
         } else {}
 
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_PHONE_STATE)) {
+            } else {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_PHONE_STATE}, 1);
+            }
+        } else {}
+
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -79,39 +86,39 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(ctx);
-                LayoutInflater inflater = ((Activity)ctx).getLayoutInflater();
-                View rootView = inflater.inflate(R.layout.incident,null,false);
+            AlertDialog.Builder builder = new AlertDialog.Builder(ctx);
+            LayoutInflater inflater = ((Activity)ctx).getLayoutInflater();
+            View rootView = inflater.inflate(R.layout.incident,null,false);
 
-                final View testView = view;
-                final EditText description = rootView.findViewById(R.id.txtIncidentDescriptionValue);
-                final Spinner incidentType = rootView.findViewById(R.id.spinnerIncidentType);
+            final View testView = view;
+            final EditText description = rootView.findViewById(R.id.txtIncidentDescriptionValue);
+            final Spinner incidentType = rootView.findViewById(R.id.spinnerIncidentType);
 
-                builder.setView(rootView);
-                builder.setTitle("New Incident");
-                builder.setNegativeButton("Cancel", new
-                        DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        });
+            builder.setView(rootView);
+            builder.setTitle("New Incident");
+            builder.setNegativeButton("Cancel", new
+                    DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                }
+            });
 
-                builder.setPositiveButton("Send", new
-                        DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                String result = mSensorService.publishIncident(getUUID(), getStewardName(), incidentTypeToNr(incidentType.getSelectedItem().toString()), description.getText().toString());
-                                if(result == null){
-                                    result = "Incident created";
-                                }
+            builder.setPositiveButton("Send", new
+                    DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                String result = mSensorService.publishIncident(getUUID(), getStewardName(), incidentTypeToNr(incidentType.getSelectedItem().toString()), description.getText().toString());
+                if(result == null){
+                    result = "Incident created";
+                }
 
-                                Snackbar.make(testView, result, Snackbar.LENGTH_LONG).setAction("Action", null).show();
-                                dialog.dismiss();
-                            }
-                        });
+                Snackbar.make(testView, result, Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                dialog.dismiss();
+                }
+            });
 
-                builder.show();
+            builder.show();
             }
         });
 
@@ -225,6 +232,14 @@ public class MainActivity extends AppCompatActivity {
         Log.i("MAINACT", "onDestroy!");
 
         super.onDestroy();
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent startMain = new Intent(Intent.ACTION_MAIN);
+        startMain.addCategory(Intent.CATEGORY_HOME);
+        startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(startMain);
     }
 
     private boolean isMyServiceRunning(Class<?> serviceClass) {
