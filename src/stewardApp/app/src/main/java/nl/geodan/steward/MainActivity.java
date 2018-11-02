@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView txtSliderValue;
 
     private Timer updateTimer = new Timer();
-
+    private Intent service;
     HashMap<Integer, String> incidentTypes = new HashMap<Integer, String>();
 
     @Override
@@ -136,12 +136,11 @@ public class MainActivity extends AppCompatActivity {
         txtAccuracy = findViewById(R.id.txtAccuracyValue);
         txtHeading = findViewById(R.id.txtHeadingValue);
 
+        //service = new Intent(ctx, SensorService.class);
+        //ctx.startService(service);
         mSensorService = new SensorService(ctx);
         mServiceIntent = new Intent(ctx, mSensorService.getClass());
-
-        if (!isMyServiceRunning(mSensorService.getClass())) {
-            startService(mServiceIntent);
-        }
+        startService(mServiceIntent);
 
         txtDeviceId.setText(getUUID());
         txtStewardName.setText(getStewardName());
@@ -228,7 +227,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onDestroy() {
-        stopService(mServiceIntent);
+        stopService(service);
         Log.i("MAINACT", "onDestroy!");
 
         super.onDestroy();
@@ -240,18 +239,6 @@ public class MainActivity extends AppCompatActivity {
         startMain.addCategory(Intent.CATEGORY_HOME);
         startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(startMain);
-    }
-
-    private boolean isMyServiceRunning(Class<?> serviceClass) {
-        ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
-        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
-            if (serviceClass.getName().equals(service.service.getClassName())) {
-                Log.i ("isMyServiceRunning?", true+"");
-                return true;
-            }
-        }
-        Log.i ("isMyServiceRunning?", false+"");
-        return false;
     }
 
     @Override

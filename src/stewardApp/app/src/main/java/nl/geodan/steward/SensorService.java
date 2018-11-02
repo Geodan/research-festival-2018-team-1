@@ -141,11 +141,9 @@ public class SensorService extends Service implements SensorEventListener {
         NotificationCompat.BigTextStyle bigTextStyle = new NotificationCompat.BigTextStyle();
         bigTextStyle.setBigContentTitle("ArenA Steward Tracker");
         bigTextStyle.bigText("Status: Tracking");
-        // Set big text style.
         builder.setStyle(bigTextStyle);
 
         builder.setWhen(System.currentTimeMillis());
-        builder.setSmallIcon(R.mipmap.ic_launcher);
         builder.setSmallIcon(R.drawable.route);
 
         // Make the notification max priority.
@@ -176,8 +174,6 @@ public class SensorService extends Service implements SensorEventListener {
 
     @Override
     public void onDestroy() {
-
-
         Log.i("EXIT", "ondestroy!");
        // Intent broadcastIntent = new Intent("nl.geodan.steward.RestartSensor");
        // sendBroadcast(broadcastIntent);
@@ -193,6 +189,7 @@ public class SensorService extends Service implements SensorEventListener {
             }
         }
 
+        super.stopSelf();
         super.onDestroy();
     }
 
